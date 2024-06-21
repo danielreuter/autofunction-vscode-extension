@@ -39,24 +39,12 @@ const descriptions = [
 
 const calls = [
   {
-    start: [
-      "export const sum = compiler({",
-    ],
-    end: [
-      "  in: z.number().array(),",
-      "  out: z.number(),",
-      "});",
-    ],
+    start: ["export const sum = compiler({"],
+    end: ["  in: z.number().array(),", "  out: z.number(),", "});"],
   },
   {
-    start: [
-      "export const multiply = compiler({",
-      "  in: z.number().array(),",
-    ],
-    end: [
-      "  out: z.number(),",
-      "});",
-    ],
+    start: ["export const multiply = compiler({", "  in: z.number().array(),"],
+    end: ["  out: z.number(),", "});"],
   },
   {
     start: [
@@ -64,9 +52,7 @@ const calls = [
       "  in: z.number().array(),",
       "  out: z.number(),",
     ],
-    end: [
-      "});",
-    ],
+    end: ["});"],
   },
 ];
 
@@ -77,11 +63,9 @@ const scaffolds = [
       "function testSum() {",
       "  const result = sum([1, 2, 3]);",
       "  console.log(result);",
-      "}"
+      "}",
     ],
-    end: [
-      "// End of test for sum function",
-    ],
+    end: ["// End of test for sum function"],
   },
   {
     start: [
@@ -89,11 +73,9 @@ const scaffolds = [
       "function testMultiply() {",
       "  const result = multiply([1, 2, 3]);",
       "  console.log(result);",
-      "}"
+      "}",
     ],
-    end: [
-      "// End of test for multiply function",
-    ],
+    end: ["// End of test for multiply function"],
   },
   {
     start: [
@@ -101,11 +83,9 @@ const scaffolds = [
       "function testDivide() {",
       "  const result = divide([1, 2, 3]);",
       "  console.log(result);",
-      "}"
+      "}",
     ],
-    end: [
-      "// End of test for divide function",
-    ],
+    end: ["// End of test for divide function"],
   },
 ];
 
@@ -117,7 +97,11 @@ function createChunk(description: Description, call: Call) {
   ].join("\n");
 }
 
-function createFixture(description: Description, call: Call, scaffold: Scaffold) {
+function createFixture(
+  description: Description,
+  call: Call,
+  scaffold: Scaffold,
+) {
   return [
     scaffold.start.join("\n"),
     createChunk(description, call),
@@ -135,7 +119,6 @@ for (const desc of descriptions) {
 }
 
 describe("Test AST logic", () => {
-
   it("Test regexes should match the test value", () => {
     for (const desc of descriptions) {
       assert.strictEqual(desc.regex.test(desc.value), true);
@@ -163,7 +146,10 @@ describe("Test AST logic", () => {
           for (const call of compilerCalls) {
             assert.strictEqual(call.chunk.test(chunk), true);
             assert.strictEqual(call.description.test(desc.value), true);
-            assert.strictEqual(call.description.toString(), desc.regex.toString()); 
+            assert.strictEqual(
+              call.description.toString(),
+              desc.regex.toString(),
+            );
           }
         }
       }

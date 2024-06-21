@@ -1,6 +1,6 @@
-# autofunction-vscode-extension README
+# autofunction-helpers README
 
-This is the README for your extension "autofunction-vscode-extension". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "autofunction-helpers". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
@@ -70,4 +70,4 @@ You can author your README using Visual Studio Code. Here are some useful editor
 
 **Enjoy!**
 
-# autofunction-vscode-extension
+# autofunction-helpers

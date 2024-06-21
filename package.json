@@ -1,6 +1,6 @@
 {
-  "name": "autofunction-vscode-extension",
-  "displayName": "autofunction-vscode-extension",
+  "name": "autofunction-helpers",
+  "displayName": "autofunction-helpers",
   "description": "in-IDE helpers for autofunctions",
   "version": "0.0.1",
   "engines": {
@@ -17,8 +17,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "autofunction-vscode-extension.helloWorld",
+        "command": "extension.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "extension.pasteCode",
+        "title": "Paste Code"
       }
     ],
     "codeLensProviders": [
@@ -63,6 +67,7 @@
     "@babel/generator": "^7.24.7",
     "@babel/parser": "^7.24.7",
     "@babel/traverse": "^7.24.7",
+    "autofunction": "^0.0.6",
     "vitest": "^1.6.0"
   }
 }

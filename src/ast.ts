@@ -107,8 +107,7 @@ export class Matcher {
 
     const lines = code.split("\n");
     let call = "";
-    for (let i = callStartLine-1; i <= callEndLine-1; i++) {
-      console.log("looping", i, lines[i])
+    for (let i = callStartLine - 1; i <= callEndLine - 1; i++) {
       call += lines[i].trim() + " ";
     }
 
@@ -123,16 +122,18 @@ export class Matcher {
 
   static doTemplateLiteral(value: t.TemplateLiteral): RegExp {
     return new RegExp(
-      value.quasis.map((quasi) => {
-        const cooked = quasi.value.cooked ?? "";
-        return escapeRegexCharacters(cooked);
-      }).join(".*"),
+      value.quasis
+        .map((quasi) => {
+          const cooked = quasi.value.cooked ?? "";
+          return escapeRegexCharacters(cooked);
+        })
+        .join(".*"),
     );
   }
 }
 
 function escapeRegexCharacters(string: string) {
-  return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
+  return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, "\\$&");
 }
 
 function parse(code: string) {
