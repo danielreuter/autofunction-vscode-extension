@@ -12,7 +12,12 @@ import { FnDisk, FnSnapshot } from "autofunction";
 export function createLens() {
   const provider = new CodeLensProvider();
   const subscription = vscode.languages.registerCodeLensProvider(
-    { scheme: "file", language: "typescript" }, // todo
+    [
+      { scheme: "file", language: "typescript" },
+      { scheme: "file", language: "javascript" },
+      { scheme: "file", language: "javascriptreact" },
+      { scheme: "file", language: "typescriptreact" },
+    ],
     provider,
   );
   return { provider, subscription };
